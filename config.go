@@ -7,9 +7,9 @@ package main
 // every key; when no match is found, the fallback command will be used.
 //
 // Examples:
-//     youtubeVideo: []string{"mpv", "--fs", "--ytdl-format=bestvideo[height<=?1080]+bestaudio/best"},
-//     png:          []string{"urlopen-png"},
-//     fallback:     []string{"$BROWSER"},
+//     youtubeVideo: {"mpv", "--fs", "--ytdl-format=bestvideo[height<=?1080]+bestaudio/best"},
+//     png:          {"urlopen-png"},
+//     fallback:     {"$BROWSER"},
 var commands = map[match][]string{
-	fallback: []string{"firefox"},
+	fallback: {"firefox"},
 }
