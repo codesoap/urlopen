@@ -23,13 +23,13 @@ const (
 	fallback
 )
 
-var patterns = map[match]*regexp.Regexp{
-	youtubeVideo: regexp.MustCompile(`(?i)^(https://)?(www\.|m\.)?youtube\.[a-z]{2,4}/watch`),
+var patterns = map[match]string{
+	youtubeVideo: `(?i)^(https://)?(www\.|m\.)?youtube\.[a-z]{2,4}/watch`,
 
-	gif: regexp.MustCompile(`(?i)\.gif$`),
-	jpg: regexp.MustCompile(`(?i)\.jpe?g$`),
-	pdf: regexp.MustCompile(`(?i)\.pdf$`),
-	png: regexp.MustCompile(`(?i)\.png$`),
+	gif: `(?i)\.gif$`,
+	jpg: `(?i)\.jpe?g$`,
+	pdf: `(?i)\.pdf$`,
+	png: `(?i)\.png$`,
 }
 
 func main() {
@@ -49,7 +49,7 @@ func openUrl(url string) error {
 	var i match
 	for i = 0; i < fallback; i++ {
 		if pattern, ok := patterns[i]; ok {
-			if !pattern.MatchString(url) {
+			if !regexp.MustCompile(pattern).MatchString(url) {
 				continue
 			}
 			var tmpCommand []string
