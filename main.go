@@ -15,6 +15,9 @@ const (
 	youtubeVideo = iota
 
 	// Filetypes:
+	gif
+	jpg
+	pdf
 	png
 
 	fallback
@@ -23,7 +26,10 @@ const (
 var patterns = map[match]*regexp.Regexp{
 	youtubeVideo: regexp.MustCompile(`(?i)^(https://)?(www\.|m\.)?youtube\.[a-z]{2,4}/watch`),
 
-	png:          regexp.MustCompile(`(?i)\.png$`),
+	gif: regexp.MustCompile(`(?i)\.gif$`),
+	jpg: regexp.MustCompile(`(?i)\.jpe?g$`),
+	pdf: regexp.MustCompile(`(?i)\.pdf$`),
+	png: regexp.MustCompile(`(?i)\.png$`),
 }
 
 func main() {
